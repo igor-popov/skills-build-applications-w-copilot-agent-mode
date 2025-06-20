@@ -1,0 +1,20 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Run Django Server",
+            "type": "python",
+            "request": "launch",
+            "program": "${workspaceFolder}/octofit-tracker/backend/manage.py",
+            "args": [
+                "runserver",
+                "0.0.0.0:8000"
+            ],
+            "django": true,
+            "env": {
+                "DJANGO_ALLOWED_HOSTS": "localhost,127.0.0.1,shiny-acorn-xx5q79q6r9c9966-8000.app.github.dev"
+            },
+            "cwd": "${workspaceFolder}/octofit-tracker/backend"
+        }
+    ]
+}

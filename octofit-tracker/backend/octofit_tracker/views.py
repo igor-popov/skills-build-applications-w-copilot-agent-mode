@@ -9,7 +9,14 @@ def api_root(request, format=None):
     if request.method == 'POST':
         return Response({"message": "POST request received"}, status=status.HTTP_201_CREATED)
 
-    base_url = 'http://localhost:8000/'
+    # Prefer codespace URL if host matches, else fallback to localhost
+    codespace_url = 'https://shiny-acorn-xx5q79q6r9c9966-8000.app.github.dev/'
+    localhost_url = 'http://localhost:8000/'
+    host = request.get_host()
+    if 'shiny-acorn-xx5q79q6r9c9966-8000.app.github.dev' in host:
+        base_url = codespace_url
+    else:
+        base_url = localhost_url
     return Response({
         'users': base_url + 'api/users/?format=api',
         'teams': base_url + 'api/teams/?format=api',
